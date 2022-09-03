@@ -9,6 +9,11 @@
 #include <stdlib.h>
 #include "c-stdaux.h"
 
+#ifdef __MINGW32__
+#include <fcntl.h>
+#define pipe(fds) _pipe(fds, 1024, _O_BINARY)
+#endif
+
 /*
  * Tests for all remaining helpers
  */
